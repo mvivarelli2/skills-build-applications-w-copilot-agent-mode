@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const API_BASE = process.env.REACT_APP_CODESPACE_NAME
   ? `https://${process.env.REACT_APP_CODESPACE_NAME}-8000.app.github.dev`
-  : 'http://0.0.0.0:8000';
+  : 'http://localhost:8000';
 
 const MEDALS = ['🥇', '🥈', '🥉'];
 
