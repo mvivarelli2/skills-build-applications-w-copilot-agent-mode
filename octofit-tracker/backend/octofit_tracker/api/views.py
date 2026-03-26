@@ -1,7 +1,9 @@
 from rest_framework import viewsets
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 from django.contrib.auth import get_user_model
 from .serializers import UserSerializer, TeamSerializer, ActivitySerializer, LeaderboardSerializer, WorkoutSerializer
-from .serializers import Team, Activity, Leaderboard, Workout
+from octofit_tracker.models import Team, Activity, Leaderboard, Workout
 
 User = get_user_model()
 
@@ -24,3 +26,13 @@ class LeaderboardViewSet(viewsets.ModelViewSet):
 class WorkoutViewSet(viewsets.ModelViewSet):
     queryset = Workout.objects.all()
     serializer_class = WorkoutSerializer
+
+@api_view(['GET'])
+def api_root(request):
+    return Response({
+        'users': '/api/users/',
+        'teams': '/api/teams/',
+        'activities': '/api/activities/',
+        'leaderboard': '/api/leaderboard/',
+        'workouts': '/api/workouts/',
+    })
